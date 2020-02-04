@@ -1,0 +1,27 @@
+{
+  "name": "visual_assist_backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@azure/cognitiveservices-textanalytics": "^4.0.0",
+    "@azure/ms-rest-js": "^2.0.4",
+    "axios": "^0.19.0",
+    "connect-form": "^0.2.1",
+    "dotenv": "^8.2.0",
+    "env-dot-prop": "^2.0.1",
+    "express": "^4.17.1",
+    "form-data": "^3.0.0",
+    "fs": "0.0.1-security",
+    "https": "^1.0.0",
+    "os": "^0.1.1",
+    "pptxgenjs": "^2.6.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5"
+  }
+}
