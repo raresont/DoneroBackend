@@ -164,6 +164,8 @@ contract Supplychain {
     currentProject.totallyRaised += _value;
     currentProject.currentFunds += _value;
 
+    userProjectBalance[_owner][_projectId] -= _value;
+
     emit MoneyReleased(_projectId, _value, _owner);
 
     // We have to check if enough money has been raised to next goal, so 
