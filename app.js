@@ -60,7 +60,7 @@ app.post('/interpret', (req, res, next) => {
 const PORT = 5001;
 var Web3 = require('web3');
 var web3 = new Web3('ws://localhost:7545');
-var contractAdress = '0x7f83c2c50201a6EC315C6B645E48eFbFc302Ba6f';
+var contractAdress = '0x8a7f7b6c49804375DE4600abFbC7c76E55de6f82';
 var fs = require('fs');
 var jsonFile = "Supplychain.json";
 var parsed= JSON.parse(fs.readFileSync(jsonFile));
@@ -69,7 +69,7 @@ var contract = new web3.eth.Contract(abi, contractAdress);
 
 
 try {
-     contract.methods.createProject( web3.utils.asciiToHex('Nick'), [2, 1], "0xEAe19bE968B11a4902c642D4EbBf95D87c3B5088").send({from: "0xEAe19bE968B11a4902c642D4EbBf95D87c3B5088"}).then((result, err) => {
+     contract.methods.createProject( "0xfffffffffffffffffffffffffffffffffffffffffffffffffffffffff8a432eb", [2, 1], "0x1a1fF83d99942a1769957e85963d30Fab250C6Ef").send({from: "0x1a1fF83d99942a1769957e85963d30Fab250C6Ef"}).then((result, err) => {
          console.log(result)
          console.log(err)
      
@@ -82,7 +82,7 @@ try {
 //web3.eth.getAccounts().then(console.log);
 
 //web3.eth.
-app.listen(PORT, '192.168.2.4', () => {
+app.listen(PORT, '10.12.3.75', () => {
     console.log(`Donero running on port ${PORT}`)
 });
 app.get('/getNews', function(req, res){
