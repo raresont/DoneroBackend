@@ -58,11 +58,37 @@ app.post('/interpret', (req, res, next) => {
 });
 
 const PORT = 5000;
+var Web3 = require('web3');
+var web3 = new Web3('ws://localhost:7545');
+var contractAdress = '0xEAe19bE968B11a4902c642D4EbBf95D87c3B5088';
+var fs = require('fs');
+var jsonFile = "Supplychain.json";
+var parsed= JSON.parse(fs.readFileSync(jsonFile));
+var abi = parsed.abi;
+var contract = new web3.eth.Contract(abi, contractAdress);
 
+contract.methods.division(2,2).call((err, result) => {
+    console.log(result)
+    console.log(err)
+
+});//.name().call((err, result) => {console.log(result)})
+//web3.eth.getAccounts().then(console.log);
+
+//web3.eth.
 app.listen(PORT, '192.168.2.4', () => {
     console.log(`Donero running on port ${PORT}`)
 });
-app.get('/', function(req, res){
+app.get('/getNews', function(req, res){
     res.setHeader('Content-Type', 'application/json');
-    res.end(JSON.stringify({ a: 1 }));
+    res.end(JSON.stringify({ available: true }));
+});
+
+app.get('/getDonationOpportunities', function(req, res){
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ available: true }));
+});
+
+app.get('/getHistory', function(req, res){
+    res.setHeader('Content-Type', 'application/json');
+    res.end(JSON.stringify({ available: true }));
 });
