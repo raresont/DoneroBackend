@@ -57,21 +57,28 @@ app.post('/interpret', (req, res, next) => {
     
 });
 
-const PORT = 5000;
+const PORT = 5001;
 var Web3 = require('web3');
 var web3 = new Web3('ws://localhost:7545');
-var contractAdress = '0xEAe19bE968B11a4902c642D4EbBf95D87c3B5088';
+var contractAdress = '0x7f83c2c50201a6EC315C6B645E48eFbFc302Ba6f';
 var fs = require('fs');
 var jsonFile = "Supplychain.json";
 var parsed= JSON.parse(fs.readFileSync(jsonFile));
 var abi = parsed.abi;
 var contract = new web3.eth.Contract(abi, contractAdress);
 
-contract.methods.division(2,2).call((err, result) => {
-    console.log(result)
-    console.log(err)
 
-});//.name().call((err, result) => {console.log(result)})
+try {
+     contract.methods.createProject( web3.utils.asciiToHex('Nick'), [2, 1], "0xEAe19bE968B11a4902c642D4EbBf95D87c3B5088").send({from: "0xEAe19bE968B11a4902c642D4EbBf95D87c3B5088"}).then((result, err) => {
+         console.log(result)
+         console.log(err)
+     
+     });
+  }
+  catch(e) {
+    console.log('Catch an error: ', e)
+  }
+//.name().call((err, result) => {console.log(result)})
 //web3.eth.getAccounts().then(console.log);
 
 //web3.eth.
